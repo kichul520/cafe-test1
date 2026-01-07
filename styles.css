@@ -307,6 +307,25 @@ section {
     color: #444;
 }
 
+.more-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: #2c5f4a;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.more-btn:hover {
+    background: #1e4a38;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 95, 74, 0.3);
+}
+
 .about-image {
     position: relative;
 }

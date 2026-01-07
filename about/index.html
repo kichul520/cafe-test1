@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 | 오피스 제주</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 서브페이지 전용 스타일 */
+        .sub-hero {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #87CEEB 0%, #4A90A4 50%, #2E6171 100%);
+            margin-top: 70px;
+        }
+
+        .sub-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .sub-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .sub-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .sub-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            padding: 20px 0;
+            background: #f9fafb;
+        }
+
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: #2c5f4a;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #888;
+            margin: 0 10px;
+        }
+
+        .about-detail {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-detail .container {
+            max-width: 1000px;
+        }
+
+        .story-section {
+            margin-bottom: 80px;
+        }
+
+        .story-section h2 {
+            font-size: 2rem;
+            color: #2c5f4a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .story-content.reverse {
+            direction: rtl;
+        }
+
+        .story-content.reverse > * {
+            direction: ltr;
+        }
+
+        .story-text p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .story-image .image-placeholder {
+            height: 350px;
+        }
+
+        .values-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            color: #2c5f4a;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .team-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c5f4a;
+            margin-bottom: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8f0f2 0%, #d1e0e5 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .team-member .role {
+            color: #2c5f4a;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .sub-hero h1 {
+                font-size: 2rem;
+            }
+
+            .story-content,
+            .story-content.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="logo">오피스 제주</a>
+            <ul class="nav-links">
+                <li><a href="../index.html#about">소개</a></li>
+                <li><a href="../index.html#menu">메뉴</a></li>
+                <li><a href="../index.html#gallery">갤러리</a></li>
+                <li><a href="../location/index.html">위치</a></li>
+                <li><a href="../index.html#contact">연락처</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 서브 히어로 -->
+    <section class="sub-hero">
+        <div class="sub-hero-content">
+            <h1>카페 소개</h1>
+            <p>오피스 제주의 이야기를 들려드립니다</p>
+        </div>
+    </section>
+
+    <!-- 브레드크럼 -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../index.html">홈</a>
+            <span>›</span>
+            <strong>소개</strong>
+        </div>
+    </div>
+
+    <!-- 카페 스토리 -->
+    <section class="about-detail">
+        <div class="container">
+            <div class="story-section">
+                <h2>오피스 제주의 시작</h2>
+                <div class="story-content">
+                    <div class="story-text">
+                        <p>오피스 제주는 2020년, 제주의 아름다운 사계리에서 작은 꿈으로 시작되었습니다.
+                        도시의 바쁜 일상에서 벗어나 제주의 자연 속에서 진정한 휴식을 제공하고자 하는
+                        마음으로 이 공간을 만들었습니다.</p>
+                        <p>산방산의 웅장한 풍경과 사계 바다의 잔잔한 파도 소리가 어우러진 이곳에서,
+                        방문하시는 모든 분들이 일상의 스트레스를 잊고 진정한 여유를 느끼시길 바랍니다.</p>
+                    </div>
+                    <div class="story-image">
+                        <div class="image-placeholder">카페 창업 스토리 이미지</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-section">
+                <h2>우리의 커피 철학</h2>
+                <div class="story-content reverse">
+                    <div class="story-text">
+                        <p>오피스 제주는 최고의 원두만을 엄선하여 사용합니다. 제주의 깨끗한 물과
+                        정성스러운 로스팅으로 한 잔 한 잔 정성을 담아 커피를 내립니다.</p>
+                        <p>바리스타가 직접 로스팅한 신선한 원두로, 제주의 자연을 닮은
+                        깊고 부드러운 커피의 맛을 선사합니다. 각 계절에 맞는 시그니처 메뉴로
+                        특별한 경험을 제공해 드립니다.</p>
+                    </div>
+                    <div class="story-image">
+                        <div class="image-placeholder">커피 로스팅 이미지</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="story-section">
+                <h2>공간의 의미</h2>
+                <div class="story-content">
+                    <div class="story-text">
+                        <p>'오피스'라는 이름에는 특별한 의미가 담겨 있습니다. 현대인들에게 오피스는
+                        바쁜 일상의 상징이지만, 저희 오피스 제주에서는 그 의미를 재정의합니다.</p>
+                        <p>이곳은 일에서 벗어나 자신만의 시간을 갖는 곳, 영감을 얻고 재충전하는 곳,
+                        그리고 제주의 자연 속에서 새로운 아이디어를 떠올리는 창의적인 공간입니다.</p>
+                    </div>
+                    <div class="story-image">
+                        <div class="image-placeholder">카페 인테리어 이미지</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 가치 섹션 -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">우리의 가치</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌿</div>
+                    <h3>자연과 함께</h3>
+                    <p>제주의 아름다운 자연환경을 보존하고 지속 가능한 방식으로
+                    카페를 운영합니다. 친환경 포장재 사용과 에너지 절약에 앞장섭니다.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>진심을 담아</h3>
+                    <p>모든 음료와 디저트에 정성을 담습니다. 매일 신선한 재료로
+                    직접 만들어 최상의 품질을 유지합니다.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>지역과 상생</h3>
+                    <p>제주 지역의 농가와 협력하여 신선한 로컬 재료를 사용합니다.
+                    지역 사회와 함께 성장하는 카페를 지향합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 팀 소개 -->
+    <section class="team-section">
+        <h2>함께하는 사람들</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">👨‍🍳</div>
+                <h3>김제주</h3>
+                <p class="role">대표 / 헤드 바리스타</p>
+                <p>10년 경력의 바리스타로 제주의 맛을 담은 시그니처 메뉴를 개발합니다.</p>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">👩‍🍳</div>
+                <h3>이사계</h3>
+                <p class="role">파티시에</p>
+                <p>프랑스에서 수학한 파티시에로 수제 디저트를 담당합니다.</p>
+            </div>
+            <div class="team-member">
+                <div class="team-photo">🧑‍💼</div>
+                <h3>박한라</h3>
+                <p class="role">매니저</p>
+                <p>고객 한 분 한 분께 따뜻한 서비스를 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">오피스 제주</div>
+                <p>제주 사계의 바다를 품은 감성 카페</p>
+                <div class="footer-links">
+                    <a href="../index.html">홈</a>
+                    <a href="../about/index.html">소개</a>
+                    <a href="../index.html#menu">메뉴</a>
+                    <a href="../location/index.html">위치</a>
+                </div>
+                <p class="copyright">© 2024 오피스 제주. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

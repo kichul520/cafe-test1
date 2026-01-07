@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오시는 길 | 오피스 제주</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 서브페이지 전용 스타일 */
+        .sub-hero {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #87CEEB 0%, #4A90A4 50%, #2E6171 100%);
+            margin-top: 70px;
+        }
+
+        .sub-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .sub-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .sub-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .sub-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            padding: 20px 0;
+            background: #f9fafb;
+        }
+
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: #2c5f4a;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #888;
+            margin: 0 10px;
+        }
+
+        .location-detail {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .location-detail .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .map-section {
+            margin-bottom: 60px;
+        }
+
+        .map-large {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #e8f0f2 0%, #d1e0e5 100%);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-large .map-icon {
+            font-size: 4rem;
+        }
+
+        .map-large p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .map-large .address {
+            font-size: 1rem;
+            color: #888;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .info-card {
+            background: #f9fafb;
+            padding: 40px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-card-icon {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #2c5f4a;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            color: #666;
+        }
+
+        .info-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .directions-section {
+            background: #f9fafb;
+            padding: 80px 0;
+        }
+
+        .directions-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c5f4a;
+            margin-bottom: 50px;
+        }
+
+        .directions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .direction-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .direction-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .direction-card h3 {
+            font-size: 1.2rem;
+            color: #2c5f4a;
+            margin-bottom: 15px;
+        }
+
+        .direction-card p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .nearby-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .nearby-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c5f4a;
+            margin-bottom: 50px;
+        }
+
+        .nearby-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nearby-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #f9fafb;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .nearby-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .nearby-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .nearby-item h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .nearby-item p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2c5f4a 0%, #1e4a38 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #2c5f4a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .nearby-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sub-hero h1 {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .directions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nearby-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-large {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="nav">
+            <a href="../index.html" class="logo">오피스 제주</a>
+            <ul class="nav-links">
+                <li><a href="../about/index.html">소개</a></li>
+                <li><a href="../index.html#menu">메뉴</a></li>
+                <li><a href="../index.html#gallery">갤러리</a></li>
+                <li><a href="../location/index.html">위치</a></li>
+                <li><a href="../index.html#contact">연락처</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- 서브 히어로 -->
+    <section class="sub-hero">
+        <div class="sub-hero-content">
+            <h1>오시는 길</h1>
+            <p>제주 사계의 아름다운 풍경 속으로 오세요</p>
+        </div>
+    </section>
+
+    <!-- 브레드크럼 -->
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../index.html">홈</a>
+            <span>›</span>
+            <strong>오시는 길</strong>
+        </div>
+    </div>
+
+    <!-- 위치 상세 -->
+    <section class="location-detail">
+        <div class="container">
+            <!-- 지도 -->
+            <div class="map-section">
+                <div class="map-large">
+                    <span class="map-icon">🗺️</span>
+                    <p>오피스 제주</p>
+                    <span class="address">제주특별자치도 서귀포시 안덕면 사계리</span>
+                </div>
+            </div>
+
+            <!-- 정보 카드 -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">📍</div>
+                        <h3>주소</h3>
+                    </div>
+                    <p>제주특별자치도 서귀포시 안덕면 사계리<br>
+                    (산방산 인근, 사계해변 도보 5분)</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">⏰</div>
+                        <h3>영업시간</h3>
+                    </div>
+                    <ul>
+                        <li><span>평일</span><span>09:00 - 20:00</span></li>
+                        <li><span>주말/공휴일</span><span>09:00 - 21:00</span></li>
+                        <li><span>라스트오더</span><span>마감 30분 전</span></li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">📞</div>
+                        <h3>연락처</h3>
+                    </div>
+                    <p>전화: 064-123-4567<br>
+                    이메일: hello@officejeju.com<br>
+                    인스타그램: @office_jeju</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">🅿️</div>
+                        <h3>주차 안내</h3>
+                    </div>
+                    <p>무료 주차장 완비 (약 20대 주차 가능)<br>
+                    대형 버스 주차 가능<br>
+                    장애인 전용 주차구역 2대</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 교통편 안내 -->
+    <section class="directions-section">
+        <h2>교통편 안내</h2>
+        <div class="directions-grid">
+            <div class="direction-card">
+                <div class="direction-icon">✈️</div>
+                <h3>제주공항에서</h3>
+                <p>자가용: 약 50분 소요<br>
+                (평화로 또는 1132번 도로 이용)<br><br>
+                버스: 공항에서 시외버스터미널 이동 후<br>
+                750번 버스 탑승 (약 1시간 30분)</p>
+            </div>
+            <div class="direction-card">
+                <div class="direction-icon">🚗</div>
+                <h3>중문관광단지에서</h3>
+                <p>자가용: 약 20분 소요<br>
+                (1132번 해안도로 이용)<br><br>
+                해안도로를 따라 서쪽으로 이동<br>
+                산방산 방향으로 진입</p>
+            </div>
+            <div class="direction-card">
+                <div class="direction-icon">🚌</div>
+                <h3>대중교통</h3>
+                <p>750번 버스: 사계리 정류장 하차<br>
+                (정류장에서 도보 5분)<br><br>
+                251번 버스: 산방산 입구 하차<br>
+                (정류장에서 도보 10분)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주변 관광지 -->
+    <section class="nearby-section">
+        <h2>주변 관광지</h2>
+        <div class="nearby-grid">
+            <div class="nearby-item">
+                <div class="nearby-icon">🏔️</div>
+                <h4>산방산</h4>
+                <p>차량 5분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🏖️</div>
+                <h4>사계해변</h4>
+                <p>도보 5분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🌅</div>
+                <h4>송악산</h4>
+                <p>차량 10분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🏝️</div>
+                <h4>마라도</h4>
+                <p>차량 15분 (선착장)</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🎭</div>
+                <h4>중문관광단지</h4>
+                <p>차량 20분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🌊</div>
+                <h4>용머리해안</h4>
+                <p>차량 5분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🌸</div>
+                <h4>화순금모래해변</h4>
+                <p>차량 10분</p>
+            </div>
+            <div class="nearby-item">
+                <div class="nearby-icon">🍊</div>
+                <h4>감귤 체험농장</h4>
+                <p>차량 15분</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <h2>오피스 제주에서 특별한 시간을 보내세요</h2>
+        <p>산방산과 사계 바다가 어우러진 풍경 속에서 여유로운 커피 한 잔</p>
+        <a href="tel:064-123-4567" class="cta-button">📞 전화 문의하기</a>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">오피스 제주</div>
+                <p>제주 사계의 바다를 품은 감성 카페</p>
+                <div class="footer-links">
+                    <a href="../index.html">홈</a>
+                    <a href="../about/index.html">소개</a>
+                    <a href="../index.html#menu">메뉴</a>
+                    <a href="../location/index.html">위치</a>
+                </div>
+                <p class="copyright">© 2024 오피스 제주. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
